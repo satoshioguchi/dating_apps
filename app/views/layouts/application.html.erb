@@ -3,28 +3,17 @@
   <head>
     <title>m💔 Match マッチ・ドットコム</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                      'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application',
+                      'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/shim' %>
   </head>
-
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <%= link_to "match💔", '#', id: "logo" %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "マッチ", '#' %></li>
-            <li><%= link_to "いいね", '#' %></li>
-            <li><%= link_to "メッセージ", '#' %></li>
-            <li><%= link_to "ログイン", '#' %></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <%= render 'layouts/header'%>
     <div class="container">
       <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>
