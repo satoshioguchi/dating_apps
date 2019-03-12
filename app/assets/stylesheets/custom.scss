@@ -24,6 +24,7 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+  background: url(love.jpg);
 }
 
 /* typography */
@@ -66,7 +67,7 @@ p {
   padding-top: 9px;
   font-weight: bold;
   &:hover {
-    color: white;
+    color: pink;
     text-decoration: none;
   }
 }
@@ -78,6 +79,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
+
   small {
     float: left;
   }
