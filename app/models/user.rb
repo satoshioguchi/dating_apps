@@ -8,4 +8,5 @@ class User < ApplicationRecord
              uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+  enum gender: {man: 1, woman: 2}
 end
