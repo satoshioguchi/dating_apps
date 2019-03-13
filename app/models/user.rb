@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
   enum gender: {man: 1, woman: 2}
+  belongs_to :prefecture, optional: true
 end
