@@ -3,16 +3,18 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= render 'shared/error_messages' %>
+      
+      <%= f.label :ご希望のユーザー名 %>
+      <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email %>
+      <%= f.label :メールアドレス %>
+      <%= f.email_field :email, class: 'form-control' %>
       
       <%= f.label :誕生日 %>
       <%= f.date_select(
-          :birthdate,
-          start_year: 1989,
+          :birthdate, class: 'form-control',
+          start_year: 1920,
           end_year: (Time.now.year - 18),
           default: Date.new(1989, 1, 1)) %>
 
@@ -20,17 +22,19 @@
       <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name,
           include_blank: '選択して下さい' %>
         
-      <%= f.label :性別 %>
-      <%= f.select :gender, User.genders_i18n.keys.map {|k| [User.genders_i18n[k], k]} %>
+      <%= f.label :私の性別は %>
+      <%= f.select :gender,
+          User.genders_i18n.keys.map {|k| [User.genders_i18n[k], k]} %>
 
       <%= f.label :希望の相手は %>
-      <%= f.select :gender, User.genders_i18n.keys.map {|k| [User.genders_i18n[k], k]} %>
+      <%= f.select :gender,
+          User.genders_i18n.keys.map {|k| [User.genders_i18n[k], k]} %>
 
       <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
