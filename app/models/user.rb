@@ -10,4 +10,11 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   enum gender: {man: 1, woman: 2}
   belongs_to :prefecture, optional: true
+  
+  # 渡された文字列のハッシュ値を返す
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 end
