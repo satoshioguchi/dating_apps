@@ -8,7 +8,7 @@ class User < ApplicationRecord
              format: { with: VALID_EMAIL_REGEX },
              uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   enum gender: {man: 1, woman: 2}
   belongs_to :prefecture, optional: true
   
