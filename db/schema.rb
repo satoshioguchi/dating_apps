@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190319074924) do
+ActiveRecord::Schema.define(version: 20190320034314) do
 
   create_table "prefectures", force: :cascade do |t|
     t.string "name"
@@ -29,6 +29,9 @@ ActiveRecord::Schema.define(version: 20190319074924) do
     t.integer "prefecture_id"
     t.string "remember_digest"
     t.boolean "admin", default: false
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
   end
