@@ -3,9 +3,13 @@
     <section class="user_info">
       <p>マイページ</p>
       <h1>
-        <%= gravatar_for @user, 200 %>
+        <%= gravatar_for @user, 150 %>
         <%= @user.name %>
+        <%= render 'follow_form' if logged_in? %>
       </h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
     </section>
   </aside>
 </div>
