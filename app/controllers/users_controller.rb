@@ -61,6 +61,10 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
   
+  def match
+    @users = current_user.matchers
+  end
+  
   private
 
     def user_params

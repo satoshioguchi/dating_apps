@@ -93,6 +93,10 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
   
+  def matchers
+    following & followers
+  end
+  
   private
 
     # メールアドレスをすべて小文字にする
