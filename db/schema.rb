@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190322070256) do
+ActiveRecord::Schema.define(version: 20190322143908) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20190322070256) do
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_entries_on_room_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
+  create_table "footprints", force: :cascade do |t|
+    t.string "visiter_id"
+    t.string "visited_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["visited_id"], name: "index_footprints_on_visited_id"
+    t.index ["visiter_id", "visited_id"], name: "index_footprints_on_visiter_id_and_visited_id", unique: true
+    t.index ["visiter_id"], name: "index_footprints_on_visiter_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -69,6 +79,7 @@ ActiveRecord::Schema.define(version: 20190322070256) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.integer "opponent_gender"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
   end

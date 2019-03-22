@@ -1,5 +1,16 @@
 <h1>お互いに興味を持っている人</h1>
 
 <ul class="users">
-  <%= render @users %>
+  <% @users.each do |user| %>
+  <li>
+    <% if @opponent_gender == user.gender %>
+      <%= gravatar_for user, 150 %>
+      <%= link_to user.name, user %>
+    <% end %>
+    <% if current_user.admin? && !current_user?(user) %>
+      | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+    <% end %>
+  </li>
+  <% end %>
 </ul>

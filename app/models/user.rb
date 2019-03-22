@@ -19,7 +19,12 @@ class User < ApplicationRecord
              uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  enum gender: {man: 1, woman: 2}
+  validates :birthdate, presence: true
+  validates :gender, presence: true
+  validates :prefecture_id, presence: true
+  validates :opponent_gender, presence: true
+  enum gender: {男性: 1, 女性: 2}, _suffix: true
+  enum opponent_gender: {男性: 1, 女性: 2}, _suffix: true
   belongs_to :prefecture, optional: true
   
   # 渡された文字列のハッシュ値を返す

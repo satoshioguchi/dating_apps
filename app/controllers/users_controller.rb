@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @prefecture = Prefecture.where(id: @user.prefecture_id)
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
     if @user.id == current_user.id
@@ -81,6 +82,7 @@ class UsersController < ApplicationController
   
   def matching
     @users = current_user.matchers
+    @opponent_gender = current_user.opponent_gender
   end
   
   private
@@ -88,7 +90,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation, :birthdate,
-                                   :gender, :prefecture_id)
+                                   :gender, :prefecture_id, :opponent_gender)
     end
     
     # 正しいユーザーかどうか確認

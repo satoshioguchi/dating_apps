@@ -23,7 +23,7 @@
     User.genders_i18n.keys.map {|k| [User.genders_i18n[k], k]} %>
 
   <%= f.label :希望の相手は %>
-  <%= f.select :gender,
+  <%= f.select :opponent_gender,
     User.genders_i18n.keys.map {|k| [User.genders_i18n[k], k]} %>
 
   <%= f.label :password %>

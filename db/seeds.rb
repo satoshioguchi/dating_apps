@@ -5,7 +5,11 @@ User.create!(name:  "Example User",
              password_confirmation: "foobar",
              admin:     true,
              activated: true,
-             activated_at: Time.zone.now)
+             activated_at: Time.zone.now,
+             birthdate: '1990-12-18',
+             gender: 1,
+             opponent_gender: 2,
+             prefecture_id: 11)
 
 99.times do |n|
   name  = Faker::Name.name
@@ -16,7 +20,11 @@ User.create!(name:  "Example User",
                password:              password,
                password_confirmation: password,
                activated: true,
-               activated_at: Time.zone.now)
+               activated_at: Time.zone.now,
+               birthdate: '1990-12-18',
+               gender: 2,
+               opponent_gender: 1,
+               prefecture_id: 11)
 end
 
 # リレーションシップ

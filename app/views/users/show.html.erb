@@ -7,6 +7,17 @@
         <%= @user.name %>
         <%= render 'follow_form' if logged_in? %>
       </h1>
+      <p>性別： <%= @user.gender %></p>
+      <p>
+        <% if @user.birthdate.present? %>
+          年齢： <%= (Date.today.strftime('%Y%m%d').to_i - @user.birthdate.strftime('%Y%m%d').to_i) / 10000%>歳
+        <% else %>
+          <% nil %>
+        <% end %>
+      </p>
+      <p>
+        都道府県： <%= @prefecture.map { |p| p.name } %>
+      </p>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
