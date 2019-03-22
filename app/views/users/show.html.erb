@@ -14,15 +14,11 @@
   </aside>
 </div>
 
-<h1>ユーザー詳細</h1>
-
-<h2><%= @user.email %></h2>
-
 <% if @user.id == current_user.id %>
 
 <% else %>
-  <% if @isRoom == true %>
-    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+  <% if @isRoom == true && %>
+    <p><a href="/rooms/<%= @roomId %>">ダイレクトメッセージ</a>
   <% else %>
     <%= form_for @room do |f| %>
       <%= fields_for @entry do |e| %>
@@ -32,5 +28,3 @@
     <% end %>
   <% end %>
 <% end %>
-
-<%= link_to "ユーザー一覧に戻る", users_path %>
