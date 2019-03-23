@@ -9,6 +9,7 @@
 <% if @messages.present? %>
   <% @messages.each do |m| %>
     <div class="commonMessage"><div><%= m.content %></div></div>
+    <small><strong><%= m.created_at.strftime("%Y-%m-%d %H:%M") %></a></strong></small>
     <%= gravatar_for m.user, 50 %>
     <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.name %>さん</a></strong></small>
     <hr>
