@@ -100,6 +100,10 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
   
+  def followers?(other_user)
+    followers.include?(other_user)
+  end
+  
   def matchers
     following & followers
   end

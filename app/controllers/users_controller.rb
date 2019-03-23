@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @matching = current_user
     @prefecture = Prefecture.where(id: @user.prefecture_id)
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)

@@ -10,7 +10,7 @@
       <p>性別： <%= @user.gender %></p>
       <p>
         <% if @user.birthdate.present? %>
-          年齢： <%= (Date.today.strftime('%Y%m%d').to_i - @user.birthdate.strftime('%Y%m%d').to_i) / 10000%>歳
+          年齢： <%= (Date.today.strftime('%Y%m%d').to_i - @user.birthdate.strftime('%Y%m%d').to_i) / 10000 %>歳
         <% else %>
           <% nil %>
         <% end %>
@@ -24,18 +24,6 @@
     </section>
   </aside>
 </div>
-
-<% if @user.id == current_user.id %>
-
-<% else %>
-  <% if @isRoom == true && %>
-    <p><a href="/rooms/<%= @roomId %>">ダイレクトメッセージ</a>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, :value=> @user.id %>
-      <% end %>
-      <%= f.submit "チャットを始める" %>
-    <% end %>
-  <% end %>
+<% if @matching.following?(@user) && @matching.followers?(@user) %>
+  <%= render 'shared/chat' %>
 <% end %>
